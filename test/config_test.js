@@ -5,11 +5,29 @@ const chai = require('chai'),
 describe('Config', function() {
   describe('parse', function() {
     it('parses config file', function() {
-      let data = 'config data';
+      let configYaml = `
+        BaseUrlExpected: http://www.example.com
+        BaseUrlActual: http://staging.example.com
+        Paths:
+          - /
+          - /about
+          - /search?q=hello
+      `;
 
-      let result = Config.parse(data);
+      let result = Config.parse(configYaml);
 
-      expect(result).to.equal(data);
+      let expected = [{
+        expected: 'http://www.example.com/',
+        actual: 'http://staging.example.com/',
+      }, {
+        expected: 'http://www.example.com/about',
+        actual: 'http://staging.example.com/about',
+      }, {
+        expected: 'http://www.example.com/search?q=hello',
+        actual: 'http://staging.example.com/search?q=hello',
+      }]
+
+      expect(result).to.eql(expected);
     });
   });
 });
