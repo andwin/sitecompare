@@ -9,6 +9,7 @@
   "author": "Anders",
   "license": "ISC",
   "dependencies": {
+    "async": "^2.0.0-rc.6",
     "js-yaml": "^3.6.1"
   },
   "devDependencies": {
