@@ -1,0 +1,6 @@
+BaseUrlExpected:  http://www.example.com
+BaseUrlActual: http://example.com
+Paths:
+  - /
+  - /about
+  - /search?q=hello

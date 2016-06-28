@@ -29,5 +29,22 @@ describe('Config', function() {
 
       expect(result).to.eql(expected);
     });
+
+    it('parses config file', function() {
+      let result = Config.parseFile('test/config.yml');
+
+      let expected = [{
+        expected: 'http://www.example.com/',
+        actual: 'http://example.com/',
+      }, {
+        expected: 'http://www.example.com/about',
+        actual: 'http://example.com/about',
+      }, {
+        expected: 'http://www.example.com/search?q=hello',
+        actual: 'http://example.com/search?q=hello',
+      }]
+
+      expect(result).to.eql(expected);
+    });
   });
 });
