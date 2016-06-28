@@ -4,7 +4,7 @@ const chai = require('chai'),
 
 describe('Config', function() {
   describe('parse', function() {
-    it('parses config file', function() {
+    it('parses config', function() {
       let configYaml = `
         BaseUrlExpected: http://www.example.com
         BaseUrlActual: http://staging.example.com
