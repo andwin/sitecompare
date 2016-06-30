@@ -16,5 +16,16 @@
   },
   "devDependencies": {
     "chai": "^3.5.0"
-  }
+  },
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andwin/sitecompare.git"
+  },
+  "bugs": {
+    "url": "https://github.com/andwin/sitecompare/issues"
+  },
+  "homepage": "https://github.com/andwin/sitecompare#readme"
 }
