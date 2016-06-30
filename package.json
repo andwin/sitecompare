@@ -4,7 +4,7 @@
   "description": "Tool to compare the html of two versions of a website. For example to make sure the output is the same after refactoring the code.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha test"
   },
   "author": "Anders",
   "license": "ISC",
