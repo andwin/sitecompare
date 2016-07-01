@@ -25,7 +25,7 @@ describe('Config', function() {
       }, {
         expected: 'http://www.example.com/search?q=hello',
         actual: 'http://staging.example.com/search?q=hello',
-      }]
+      }];
 
       expect(result).to.eql(expected);
     });
@@ -42,7 +42,7 @@ describe('Config', function() {
       }, {
         expected: 'http://www.example.com/search?q=hello',
         actual: 'http://example.com/search?q=hello',
-      }]
+      }];
 
       expect(result).to.eql(expected);
     });
