@@ -1,5 +1,13 @@
-BaseUrlExpected:  http://www.example.com
-BaseUrlActual: http://example.com
+Expected:
+  BaseUrl: http://www.example.com
+  RemoveContent:
+    - <script src="/assets/vendor.js?(.*)">
+    - https://img.example.com
+Actual:
+  BaseUrl: http://staging.example.com
+  RemoveContent:
+    - <script src="/assets/vendor.js?(.*)">
+    - https://img-staging.example.com
 Paths:
   - /
   - /about

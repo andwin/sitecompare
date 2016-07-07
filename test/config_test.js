@@ -6,8 +6,16 @@ describe('Config', function() {
   describe('parse', function() {
     it('parses config', function() {
       let configYaml = `
-        BaseUrlExpected: http://www.example.com
-        BaseUrlActual: http://staging.example.com
+        Expected:
+          BaseUrl: http://www.example.com
+          RemoveContent:
+            - <script src="/assets/vendor.js?(.*)">
+            - https://img.example.com
+        Actual:
+          BaseUrl: http://staging.example.com
+          RemoveContent:
+            - <script src="/assets/vendor.js?(.*)">
+            - https://img-staging.example.com
         Paths:
           - /
           - /about
@@ -16,16 +24,28 @@ describe('Config', function() {
 
       let result = Config.parse(configYaml);
 
-      let expected = [{
-        expected: 'http://www.example.com/',
-        actual: 'http://staging.example.com/',
-      }, {
-        expected: 'http://www.example.com/about',
-        actual: 'http://staging.example.com/about',
-      }, {
-        expected: 'http://www.example.com/search?q=hello',
-        actual: 'http://staging.example.com/search?q=hello',
-      }];
+      let expected = {
+        urls: [{
+          expected: 'http://www.example.com/',
+          actual: 'http://staging.example.com/',
+        }, {
+          expected: 'http://www.example.com/about',
+          actual: 'http://staging.example.com/about',
+        }, {
+          expected: 'http://www.example.com/search?q=hello',
+          actual: 'http://staging.example.com/search?q=hello',
+        }],
+        removeContent: {
+          expected: [
+            '<script src="/assets/vendor.js?(.*)">',
+            'https://img.example.com',
+          ],
+          actual: [
+            '<script src="/assets/vendor.js?(.*)">',
+            'https://img-staging.example.com',
+          ],
+        },
+      };
 
       expect(result).to.eql(expected);
     });
@@ -33,16 +53,28 @@ describe('Config', function() {
     it('parses config file', function() {
       let result = Config.parseFile('test/config.yml');
 
-      let expected = [{
-        expected: 'http://www.example.com/',
-        actual: 'http://example.com/',
-      }, {
-        expected: 'http://www.example.com/about',
-        actual: 'http://example.com/about',
-      }, {
-        expected: 'http://www.example.com/search?q=hello',
-        actual: 'http://example.com/search?q=hello',
-      }];
+      let expected = {
+        urls: [{
+          expected: 'http://www.example.com/',
+          actual: 'http://staging.example.com/',
+        }, {
+          expected: 'http://www.example.com/about',
+          actual: 'http://staging.example.com/about',
+        }, {
+          expected: 'http://www.example.com/search?q=hello',
+          actual: 'http://staging.example.com/search?q=hello',
+        }],
+        removeContent: {
+          expected: [
+            '<script src="/assets/vendor.js?(.*)">',
+            'https://img.example.com',
+          ],
+          actual: [
+            '<script src="/assets/vendor.js?(.*)">',
+            'https://img-staging.example.com',
+          ],
+        },
+      };
 
       expect(result).to.eql(expected);
     });
