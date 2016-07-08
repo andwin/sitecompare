@@ -1,8 +1,8 @@
 const chai = require('chai'),
       expect = chai.expect,
-      Config = require('../lib/config');
+      config = require('../lib/config');
 
-describe('Config', function() {
+describe('config', function() {
   describe('parse', function() {
     it('parses config', function() {
       let configYaml = `
@@ -22,7 +22,7 @@ describe('Config', function() {
           - /search?q=hello
       `;
 
-      let result = Config.parse(configYaml);
+      let result = config.parse(configYaml);
 
       let expected = {
         urls: [{
@@ -51,7 +51,7 @@ describe('Config', function() {
     });
 
     it('parses config file', function() {
-      let result = Config.parseFile('test/config.yml');
+      let result = config.parseFile('test/config.yml');
 
       let expected = {
         urls: [{
