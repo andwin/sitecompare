@@ -8,6 +8,9 @@
   },
   "author": "Anders",
   "license": "ISC",
+  "bin": {
+    "sitempmpare": "./bin/sitecompare"
+  },
   "dependencies": {
     "async": "^2.0.0-rc.6",
     "colors": "^1.1.2",
