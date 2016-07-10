@@ -18,5 +18,7 @@ for (let urlContent of fetcher) {
     console.log();
     console.log('Comparing ' + urlContent.actual.url + ' against ' + urlContent.expected.url);
     compare(actualContent, expectedContent);
+  }).catch(exception => {
+    console.log(exception.message);
   });
 }
