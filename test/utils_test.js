@@ -96,4 +96,40 @@ describe('util', function() {
       expect(result).to.eql(expected);
     });
   });
+
+  describe('shortenNonDiffs', function() {
+    it('Displays first and last five lines of text that is the same in both versions', function() {
+      let diffs = [
+        {
+          value: 'Removed text\nline2',
+          removed: true,
+        },
+        {
+          value: 'line1\nline2\nline3\nline4\nline5\nline6\nline7\nline8\nline9\nline10\nline11\nline12\nline13\nline14\nline15',
+        },
+        {
+          value: 'Removed text\nline2',
+          added: true,
+        },
+      ];
+
+      let result = util.shortenNonDiffs(diffs);
+
+      let expected = [
+        {
+          value: 'Removed text\nline2',
+          removed: true,
+        },
+        {
+          value: 'line1\nline2\nline3\nline4\nline5\n\n...\n\nline11\nline12\nline13\nline14\nline15',
+        },
+        {
+          value: 'Removed text\nline2',
+          added: true,
+        },
+      ];
+
+      expect(result).to.eql(expected);
+    });
+  });
 });
