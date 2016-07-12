@@ -5,16 +5,16 @@ const chai = require('chai'),
 describe('util', function() {
   describe('diffNotaion', function() {
     it('Added line', function() {
-      var diffs = [
+      let diffs = [
         {
           value: 'Added text\nline2',
           added: true,
         },
       ];
 
-      var result = util.addDiffNotations(diffs);
+      let result = util.addDiffNotations(diffs);
 
-      var expected = [
+      let expected = [
         {
           value: '> Added text\n> line2',
           added: true,
@@ -25,16 +25,16 @@ describe('util', function() {
     });
 
     it('Removed line', function() {
-      var diffs = [
+      let diffs = [
         {
           value: 'Removed text\nline2',
           removed: true,
         },
       ];
 
-      var result = util.addDiffNotations(diffs);
+      let result = util.addDiffNotations(diffs);
 
-      var expected = [
+      let expected = [
         {
           value: '< Removed text\n< line2',
           removed: true,
@@ -45,15 +45,15 @@ describe('util', function() {
     });
 
     it('Unchanged', function() {
-      var diffs = [
+      let diffs = [
         {
           value: 'Unchanged text\nline2',
         },
       ];
 
-      var result = util.addDiffNotations(diffs);
+      let result = util.addDiffNotations(diffs);
 
-      var expected = [
+      let expected = [
         {
           value: '= Unchanged text\n= line2',
         },
@@ -63,7 +63,7 @@ describe('util', function() {
     });
 
     it('Multiple diffs', function() {
-      var diffs = [
+      let diffs = [
         {
           value: 'Added text\nline2',
           added: true,
@@ -77,9 +77,9 @@ describe('util', function() {
         },
       ];
 
-      var result = util.addDiffNotations(diffs);
+      let result = util.addDiffNotations(diffs);
 
-      var expected = [
+      let expected = [
         {
           value: '> Added text\n> line2',
           added: true,
