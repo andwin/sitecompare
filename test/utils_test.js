@@ -131,5 +131,46 @@ describe('util', function() {
 
       expect(result).to.eql(expected);
     });
+
+  });
+
+  describe('removeWhitespaceDiffs', function() {
+    it('Removes diffs with only whitespaces', function() {
+      let diffs = [
+        {
+          value: 'Removed text',
+          removed: true,
+        },
+        {
+          value: 'Unchanged text\nline2',
+        },
+        {
+          value: '\n\n',
+          added: true,
+        },
+        {
+          value: 'Removed text\nline2',
+          added: true,
+        },
+      ];
+
+      let result = util.removeWhitespaceDiffs(diffs);
+
+      let expected = [
+        {
+          value: 'Removed text',
+          removed: true,
+        },
+        {
+          value: 'Unchanged text\nline2',
+        },
+        {
+          value: 'Removed text\nline2',
+          added: true,
+        },
+      ];
+
+      expect(result).to.eql(expected);
+    });
   });
 });
