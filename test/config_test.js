@@ -2,9 +2,9 @@ const chai = require('chai'),
       expect = chai.expect,
       config = require('../lib/config');
 
-describe('config', function() {
-  describe('parse', function() {
-    it('parses config', function() {
+describe('config', () => {
+  describe('parse', () => {
+    it('parses config', () => {
       let configYaml = `
         Expected:
           BaseUrl: http://www.example.com
@@ -50,7 +50,7 @@ describe('config', function() {
       expect(result).to.eql(expected);
     });
 
-    it('parses config file', function() {
+    it('parses config file', () => {
       let result = config.parseFile('test/config.yml');
 
       let expected = {

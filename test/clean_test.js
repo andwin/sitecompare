@@ -2,8 +2,8 @@ const chai = require('chai'),
       expect = chai.expect,
       cleaner = require('../lib/clean');
 
-describe('clean', function() {
-  it('parses config file', function() {
+describe('clean', () => {
+  it('parses config file', () => {
     let content = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse porttitor egestas faucibus.';
     let patterns = [
       'ipsum',

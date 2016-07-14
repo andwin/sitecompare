@@ -2,9 +2,9 @@ const chai = require('chai'),
       expect = chai.expect,
       util = require('../lib/util');
 
-describe('util', function() {
-  describe('diffNotaion', function() {
-    it('Added line', function() {
+describe('util', () => {
+  describe('diffNotaion', () => {
+    it('Added line', () => {
       let diffs = [
         {
           value: 'Added text\nline2',
@@ -24,7 +24,7 @@ describe('util', function() {
       expect(result).to.eql(expected);
     });
 
-    it('Removed line', function() {
+    it('Removed line', () => {
       let diffs = [
         {
           value: 'Removed text\nline2',
@@ -44,7 +44,7 @@ describe('util', function() {
       expect(result).to.eql(expected);
     });
 
-    it('Unchanged', function() {
+    it('Unchanged', () => {
       let diffs = [
         {
           value: 'Unchanged text\nline2',
@@ -62,7 +62,7 @@ describe('util', function() {
       expect(result).to.eql(expected);
     });
 
-    it('Multiple diffs', function() {
+    it('Multiple diffs', () => {
       let diffs = [
         {
           value: 'Added text\nline2',
@@ -97,8 +97,8 @@ describe('util', function() {
     });
   });
 
-  describe('shortenNonDiffs', function() {
-    it('Displays first and last five lines of text that is the same in both versions', function() {
+  describe('shortenNonDiffs', () => {
+    it('Displays first and last five lines of text that is the same in both versions', () => {
       let diffs = [
         {
           value: 'Removed text\nline2',
@@ -134,8 +134,8 @@ describe('util', function() {
 
   });
 
-  describe('removeWhitespaceDiffs', function() {
-    it('Removes diffs with only whitespaces', function() {
+  describe('removeWhitespaceDiffs', () => {
+    it('Removes diffs with only whitespaces', () => {
       let diffs = [
         {
           value: 'Removed text',
