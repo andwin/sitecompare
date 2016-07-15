@@ -1,4 +1,5 @@
-const configParser = require('./lib/config'),
+const async = require('async'),
+      configParser = require('./lib/config'),
       fetch = require('./lib/fetch'),
       clean = require('./lib/clean'),
       compare = require('./lib/compare');
@@ -6,19 +7,21 @@ const configParser = require('./lib/config'),
 let configFile = process.argv[2];
 let config = configParser.parseFile(configFile);
 
-let fetcher = fetch(config.urls);
+async.eachSeries(config.urls, (url, callback) => {
+  console.log();
+  console.log('Comparing ' + url.actual + ' against ' + url.expected);
 
-for (let urlContent of fetcher) {
-  Promise.all([urlContent.actual.content, urlContent.expected.content]).then(values => {
-    let [actualContent, expectedContent] = values;
+  async.parallel({
+    expected: fetch(url.expected),
+    actual: fetch(url.actual),
+  }, (err, content) => {
+    let actualContent = clean(content.actual, config.removeContent.actual);
+    let expectedContent = clean(content.expected, config.removeContent.expected);
 
-    actualContent = clean(actualContent, config.removeContent.actual);
-    expectedContent = clean(expectedContent, config.removeContent.expected);
-
-    console.log();
-    console.log('Comparing ' + urlContent.actual.url + ' against ' + urlContent.expected.url);
     compare(actualContent, expectedContent);
-  }).catch(exception => {
-    console.log(exception.message);
+    callback();
   });
-}
+}, () => {
+  console.log();
+  console.log('Done!');
+});
