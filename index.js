@@ -19,9 +19,15 @@ async.eachSeries(config.urls, (url, callback) => {
   async.parallel({
     expected: fetch(url.expected),
     actual: fetch(url.actual),
-  }, (err, content) => {
-    let actualContent = clean(content.actual, config.removeContent.actual);
-    let expectedContent = clean(content.expected, config.removeContent.expected);
+  }, (err, response) => {
+    if (response.actual.statusCode !== response.expected.statusCode) {
+      console.log(`Expected response code ${response.expected.statusCode}. Actual response code  ${response.actual.statusCode}`);
+    } else if (response.actual.statusCode !== 200) {
+      console.log(`Response code ${response.actual.statusCode}`);
+    }
+
+    let actualContent = clean(response.actual.body, config.removeContent.actual);
+    let expectedContent = clean(response.expected.body, config.removeContent.expected);
 
     compare(actualContent, expectedContent);
     callback();
