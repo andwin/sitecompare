@@ -20,6 +20,11 @@ async.eachSeries(config.urls, (url, callback) => {
     expected: fetch(url.expected),
     actual: fetch(url.actual),
   }, (err, response) => {
+    if (err) {
+      console.log(err.toString());
+      return;
+    }
+
     if (response.actual.statusCode !== response.expected.statusCode) {
       console.log(`Expected response code ${response.expected.statusCode}. Actual response code  ${response.actual.statusCode}`);
     } else if (response.actual.statusCode !== 200) {
