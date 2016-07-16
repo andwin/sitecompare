@@ -4,6 +4,11 @@ const async = require('async'),
       clean = require('./lib/clean'),
       compare = require('./lib/compare');
 
+if (!process.argv[2]) {
+  console.log('Usage: sitecompare <config file>');
+  process.exit(1);
+}
+
 let configFile = process.argv[2];
 let config = configParser.parseFile(configFile);
 
