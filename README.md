@@ -32,7 +32,7 @@ Paths:
 
 ## Usage
 
-```siitecompare <config file>```
+```sitecompare <config file>```
 
 for example
 
