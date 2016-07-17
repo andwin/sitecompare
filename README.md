@@ -13,7 +13,7 @@ But some of the code on the staging server will always be different. For example
 ## Configuration
 Here is a sample config file. Specify the base url for the expected version (for example your production site) and your actual version (for example your staging server), lists of regular expressions for content to remove and finally a list of paths to compare from the two website versions.
 
-```
+```yaml
 Expected:
   BaseUrl: http://www.example.com
   RemoveContent:
