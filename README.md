@@ -32,8 +32,8 @@ Paths:
 
 ## Usage
 
-```sitecompare <config file>```
+`sitecompare <config file>`
 
 for example
 
-```sitecompare config.yaml```
+`sitecompare config.yaml`
