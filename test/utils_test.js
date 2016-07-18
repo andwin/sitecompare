@@ -172,5 +172,86 @@ describe('util', () => {
 
       expect(result).to.eql(expected);
     });
+
+    it('Combines remove-diffs if there are two in a row after whitespace diffs are removed', () => {
+      let diffs = [
+        {
+          value: 'Text 1\n',
+          removed: true,
+        },
+        {
+          value: '\n\n',
+          added: true,
+        },
+        {
+          value: 'Text 2\n',
+          removed: true,
+        },
+      ];
+
+      let result = util.removeWhitespaceDiffs(diffs);
+
+      let expected = [
+        {
+          value: 'Text 1\nText 2\n',
+          removed: true,
+        },
+      ];
+
+      expect(result).to.eql(expected);
+    });
+
+    it('Combines added-diffs if there are two in a row after whitespace diffs are removed', () => {
+      let diffs = [
+        {
+          value: 'Text 1\n',
+          added: true,
+        },
+        {
+          value: '\n\n',
+          removed: true,
+        },
+        {
+          value: 'Text 2\n',
+          added: true,
+        },
+      ];
+
+      let result = util.removeWhitespaceDiffs(diffs);
+
+      let expected = [
+        {
+          value: 'Text 1\nText 2\n',
+          added: true,
+        },
+      ];
+
+      expect(result).to.eql(expected);
+    });
+
+    it('Combines unchanged-diffs if there are two in a row after whitespace diffs are removed', () => {
+      let diffs = [
+        {
+          value: 'Text 1\n',
+        },
+        {
+          value: '\n\n',
+          removed: true,
+        },
+        {
+          value: 'Text 2\n',
+        },
+      ];
+
+      let result = util.removeWhitespaceDiffs(diffs);
+
+      let expected = [
+        {
+          value: 'Text 1\nText 2\n',
+        },
+      ];
+
+      expect(result).to.eql(expected);
+    });
   });
 });
