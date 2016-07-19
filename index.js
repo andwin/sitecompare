@@ -34,7 +34,13 @@ async.eachSeries(config.urls, (url, callback) => {
     let actualContent = clean(response.actual.body, config.removeContent.actual);
     let expectedContent = clean(response.expected.body, config.removeContent.expected);
 
-    compare(actualContent, expectedContent);
+    let diffs = compare(actualContent, expectedContent);
+
+    for (let diff of diffs) {
+      let color = diff.added ? 'green' : diff.removed ? 'red' : 'grey';
+      console.log(diff.value[color]);
+    }
+
     callback();
   });
 }, () => {
