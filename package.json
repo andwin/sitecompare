@@ -7,7 +7,7 @@
     "test": "eslint .; mocha test"
   },
   "author": "Anders",
-  "license": "ISC",
+  "license": "BSD-3-Clause",
   "bin": {
     "sitempmpare": "./bin/sitecompare"
   },
