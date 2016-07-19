@@ -1,4 +1,5 @@
 const async = require('async'),
+      colors = require('colors'),
       configParser = require('./lib/config'),
       fetch = require('./lib/fetch'),
       clean = require('./lib/clean'),
@@ -8,6 +9,11 @@ if (!process.argv[2]) {
   console.log('Usage: sitecompare <config file>');
   process.exit(1);
 }
+
+colors.setTheme({
+  ok: 'green',
+  error: 'red',
+});
 
 let configFile = process.argv[2];
 let config = configParser.parseFile(configFile);
