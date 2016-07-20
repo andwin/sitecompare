@@ -16,6 +16,7 @@
   "bin": {
     "sitempmpare": "./bin/sitecompare"
   },
+  "preferGlobal": true,
   "engines": {
     "node" : ">6.0.0"
   },
