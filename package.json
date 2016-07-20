@@ -8,6 +8,11 @@
   },
   "author": "Anders",
   "license": "BSD-3-Clause",
+  "files": [
+    "index.js",
+    "lib",
+    "bin"
+  ],
   "bin": {
     "sitempmpare": "./bin/sitecompare"
   },
