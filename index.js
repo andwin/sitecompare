@@ -42,9 +42,27 @@ async.eachSeries(config.urls, (url, callback) => {
 
     let diffs = compare(actualContent, expectedContent);
 
+    let added = 0;
+    let removed = 0;
     for (let diff of diffs) {
-      let color = diff.added ? 'green' : diff.removed ? 'red' : 'grey';
-      console.log(diff.value[color]);
+      if (diff.added) {
+        added += diff.count;
+      } else if (diff.removed) {
+        removed += diff.count;
+      }
+    }
+
+    if (!added && !removed) {
+      console.log(colors.ok('No diffs found'));
+    } else {
+      console.log(colors.error(`Diffs found: ${added} lines added and ${removed} lines removed`));
+      console.log();
+
+      let numberOfDiffsToDisplay = 5;
+      for (let diff of diffs.slice(0, numberOfDiffsToDisplay)) {
+        let color = diff.added ? 'green' : diff.removed ? 'red' : 'grey';
+        console.log(diff.value[color]);
+      }
     }
 
     callback();
