@@ -1,6 +1,6 @@
 {
   "name": "sitecompare",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Tool to compare the html of two versions of a website. For example to make sure the output is the same after refactoring the code.",
   "main": "index.js",
   "scripts": {
@@ -18,7 +18,7 @@
   },
   "preferGlobal": true,
   "engines": {
-    "node" : ">6.0.0"
+    "node": ">6.0.0"
   },
   "dependencies": {
     "async": "^2.0.0",
