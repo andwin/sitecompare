@@ -37,8 +37,8 @@ async.eachSeries(config.urls, (url, callback) => {
       console.log(`Response code ${response.actual.statusCode}`);
     }
 
-    let actualContent = clean(response.actual.body, config.removeContent.actual);
-    let expectedContent = clean(response.expected.body, config.removeContent.expected);
+    let actualContent = clean(response.actual.body, config.removeContentRegex.actual);
+    let expectedContent = clean(response.expected.body, config.removeContentRegex.expected);
 
     let diffs = compare(actualContent, expectedContent);
     report(diffs);

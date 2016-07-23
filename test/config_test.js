@@ -8,12 +8,12 @@ describe('config', () => {
       let configYaml = `
         Expected:
           BaseUrl: http://www.example.com
-          RemoveContent:
+          RemoveContentRegex:
             - <script src="/assets/vendor.js?(.*)">
             - https://img.example.com
         Actual:
           BaseUrl: http://staging.example.com
-          RemoveContent:
+          RemoveContentRegex:
             - <script src="/assets/vendor.js?(.*)">
             - https://img-staging.example.com
         Paths:
@@ -35,7 +35,7 @@ describe('config', () => {
           expected: 'http://www.example.com/search?q=hello',
           actual: 'http://staging.example.com/search?q=hello',
         }],
-        removeContent: {
+        removeContentRegex: {
           expected: [
             '<script src="/assets/vendor.js?(.*)">',
             'https://img.example.com',
@@ -64,7 +64,7 @@ describe('config', () => {
           expected: 'http://www.example.com/search?q=hello',
           actual: 'http://staging.example.com/search?q=hello',
         }],
-        removeContent: {
+        removeContentRegex: {
           expected: [
             '<script src="/assets/vendor.js?(.*)">',
             'https://img.example.com',

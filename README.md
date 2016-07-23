@@ -16,12 +16,12 @@ Here is a sample config file. Specify the base url for the expected version (for
 ```yaml
 Expected:
   BaseUrl: http://www.example.com
-  RemoveContent:
+  RemoveContentRegex:
     - <script src="/assets/vendor.js?(.*)">
     - https://img.example.com
 Actual:
   BaseUrl: http://staging.example.com
-  RemoveContent:
+  RemoveContentRegex:
     - <script src="/assets/vendor.js?(.*)">
     - https://img-staging.example.com
 Paths:
