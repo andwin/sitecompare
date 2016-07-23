@@ -4,7 +4,8 @@
   "description": "Tool to compare the html of two versions of a website. For example to make sure the output is the same after refactoring the code.",
   "main": "index.js",
   "scripts": {
-    "test": "eslint .; mocha test"
+    "test": "eslint .; mocha test",
+    "patch-release": "npm version patch && npm publish && git push"
   },
   "author": "Anders",
   "license": "BSD-3-Clause",
