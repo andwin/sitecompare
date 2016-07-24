@@ -10,6 +10,16 @@ You could for example deploy the new version to your staging server, synchronize
 
 But some of the code on the staging server will always be different. For example timestamps or version numbers on css includes, base urls for images and so on. Can I still use this? Yes! You can supply a list of regular expressions of content to remove from both versions before comparing the result.
 
+##Installation
+
+Make sure you are running a node version above 6.0.0 by running `node --version`
+
+You can use [nvm](https://github.com/creationix/nvm) to install multiple node versions.
+
+Install sitecompare by running
+
+`npm install sitecompare -g`
+
 ## Configuration
 Here is a sample config file. Specify the base url for the expected version (for example your production site) and your actual version (for example your staging server), lists of regular expressions for content to remove and finally a list of paths to compare from the two website versions.
 
