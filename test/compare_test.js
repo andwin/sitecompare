@@ -20,19 +20,19 @@ Suspendisse porttitor egestas faucibus.`;
     let expectedResult = [
       {
         count: 1,
-        value: '= Lorem ipsum dolor sit amet,\n= ',
+        value: '= Lorem ipsum dolor sit amet,\n',
       },
       {
         added: undefined,
         count: 2,
         removed: true,
-        value: '< consectetur adipiscing elit!\n< \n< ',
+        value: '< consectetur adipiscing elit!\n< \n',
       },
       {
         added: true,
         count: 1,
         removed: undefined,
-        value: '> consectetur adipiscing elit.\n> ',
+        value: '> consectetur adipiscing elit.\n',
       },
       {
         count: 1,
