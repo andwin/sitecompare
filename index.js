@@ -71,7 +71,7 @@ let report = function(diffs) {
     let numberOfDiffsToDisplay = 5;
     for (let diff of diffs.slice(0, numberOfDiffsToDisplay)) {
       let color = diff.added ? 'green' : diff.removed ? 'red' : 'grey';
-      console.log(diff.value[color]);
+      process.stdout.write(diff.value[color]);
     }
   }
 };
